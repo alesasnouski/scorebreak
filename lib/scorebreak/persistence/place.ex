@@ -53,4 +53,18 @@ defmodule ScoreBreak.Persistence.Place do
     |> cast(attrs, [:type, :name, :path])
     |> validate_required([:name, :path, :type])
   end
+
+  @spec uuid_to_ltree(String.t()) :: String.t()
+  def uuid_to_ltree(uuid) when is_binary(uuid) do
+    String.replace(uuid, "-", "_")
+  end
+
+  @spec build_path(String.t() | nil, String.t()) :: String.t()
+  def build_path(nil, id), do: uuid_to_ltree(id)
+  def build_path("", id), do: uuid_to_ltree(id)
+  def build_path(parent_path, id), do: "#{parent_path}.#{uuid_to_ltree(id)}"
+
+  @spec path_to_string(Ltree.t() | %__MODULE__{}) :: String.t()
+  def path_to_string(%__MODULE__{path: path}), do: path_to_string(path)
+  def path_to_string(%Ltree{labels: labels}), do: Enum.join(labels, ".")
 end

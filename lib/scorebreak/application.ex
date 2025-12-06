@@ -5,7 +5,7 @@ defmodule ScoreBreak.Application do
   @spec start(any, any) :: {:error, any} | {:ok, pid(), any} | {:ok, pid}
   def start(_type, _args) do
     children = [
-      StoreBreak.Service.Persistence.Repo
+      ScoreBreak.Persistence.Repo
     ]
 
     opts = [strategy: :one_for_one, name: ScoreBreak.Supervisor]
