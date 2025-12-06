@@ -22,7 +22,7 @@ defmodule ScoreBreak.Persistence.Repo.Migrations.AddRestaurants do
       timestamps(type: :utc_datetime_usec, default: fragment("NOW()"))
     end
 
-    create index(:places, [:path])
+    create index(:places, [:path], using: :gist)
 
     create table(:user_places, primary_key: false) do
       add :user_id, references(:users, type: :binary_id), primary_key: true, null: false
