@@ -20,4 +20,5 @@ config :scorebreak, ScoreBreak.Persistence.Repo,
   port: pg_port,
   pool: pg_pool,
   pool_size: pg_pool_size,
-  show_sensitive_data_on_connection_error: false
+  show_sensitive_data_on_connection_error: false,
+  types: ScoreBreak.PostgresTypes

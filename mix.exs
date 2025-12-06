@@ -24,6 +24,7 @@ defmodule Scorebreak.MixProject do
     [
       {:db_connection, "~> 2.8"},
       {:dotenvy, "~> 1.1"},
+      {:ecto_ltree, "~> 0.4.0"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, "~> 0.21.1"}
     ]
